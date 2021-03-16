@@ -14,9 +14,9 @@ pipeline {
            steps { 
                 echo "Testing......."
                 echo "Start of Stage Test"
-                result='grep "Stepanov" index.html | wc -l'
+                result=`grep "Stepanov" index.html | wc -l`
                 echo $result
-                if ( $result -eq 1 )
+                if [ "$result" = "1" ];
                 then
                     echo "Test Success!"
                 else 
