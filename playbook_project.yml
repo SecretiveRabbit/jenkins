@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+
+    - name: copy index.html
+      file: src=/var/www/html/index.html dest=/var/www/html/index.html mode=777
+      notify: restart apache
+
+    - name: check work
+      shell: sleep 10 && curl localhost:80
+
+  handlers:
+
+  - name: restart apache
+    service: name=httpd state=restarted
+
