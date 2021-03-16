@@ -39,7 +39,8 @@ pipeline {
                 echo "Deploying......."
                 echo "End of Stage Deploy"
                 sh '''
-                ansible-playbook playbook_project.yml -l all
+                ansible-playbook playbook_project.yml -l staging_servers
+                ansible-playbook playbook_project.yml -l prod_servers
                 '''
              }
          }
