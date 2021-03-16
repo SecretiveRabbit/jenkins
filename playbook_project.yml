@@ -5,7 +5,7 @@
   tasks:
 
     - name: copy index.html
-      file: src=./index.html dest=/var/www/html/index.html mode=777
+      copy: src=./index.html dest=/var/www/html/index.html mode=777
       notify: restart apache
 
     - name: check work
