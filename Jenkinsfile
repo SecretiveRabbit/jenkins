@@ -15,7 +15,7 @@ pipeline {
                 echo "Testing......."
                 echo "Start of Stage Test"
                 sh '''
-                result=`grep "Stepanov" index.html | wc -l`
+                result=`grep "Terraform" index.html | wc -l`
                 echo $result
                 if [ "$result" = "1" ];
                 then
