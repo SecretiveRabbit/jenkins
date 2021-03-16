@@ -3,7 +3,6 @@
   become: true
 
   tasks:
-
     - name: copy index.html
       copy: src=./index.html dest=/var/www/html/index123.html mode=777
       shell: |
