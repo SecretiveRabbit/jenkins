@@ -1,41 +1,32 @@
 pipeline {
     agent any
-    
-    environment {
-        OWNER_NAME = "Alexander Stepanov"
-        PROJECT_NAME = "Jenkinsfile"
-    }
 
     stages {
-        stage('the-first-stage') {
+        stage('Building') {
             steps {
+              #  docker build -t StepanovContainer
                 echo "Start of Stage Build"
                 echo "Building......."
-                echo "End of Stage Build"
-                
+                echo "End of Stage Build"   
             }
         }
-        stage('the-second-stage') {
+        stage('testing') {
            steps { 
-                echo "Start of Stage Test"
                 echo "Testing......."
+                echo "Start of Stage Test"
                 sh '''
-                echo "The name of the project is: ${PROJECT_NAME}."
-                echo "And the owner of the project is ${OWNER_NAME}."
+                curl `http://webserver-ha-elb-1676357618.eu-west-2.elb.amazonaws.com/` | grep Stepanov
                 echo "End of Stage Test"
                 '''
            }
-           }
-         stage('the-third-stage') {
+        }
+
+         stage('ansible') {
              steps {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
-                sh '''
-                touch file152
-                rm file152
-                '''
                 echo "End of Stage Deploy"
-             }
-        }
+          }
+        
     }
 }
