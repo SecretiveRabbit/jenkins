@@ -14,7 +14,7 @@ pipeline {
            steps { 
                 echo "Testing......."
                 echo "Start of Stage Test"
-               sh '''
+                sh '''
                 result=`grep "Stepanov" index.html | wc -l`
                 echo $result
                 if [ "$result" = "1" ];
@@ -38,6 +38,9 @@ pipeline {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
                 echo "End of Stage Deploy"
+                sh '''
+                ansible all -m ping
+                '''
              }
          }
   }
