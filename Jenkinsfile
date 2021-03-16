@@ -33,7 +33,7 @@ pipeline {
            }
         }
 
-         stage('ansible') {
+         stage('Deploy') {
              steps {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
