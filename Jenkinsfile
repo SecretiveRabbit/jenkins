@@ -14,6 +14,7 @@ pipeline {
            steps { 
                 echo "Testing......."
                 echo "Start of Stage Test"
+               sh '''
                 result=`grep "Stepanov" index.html | wc -l`
                 echo $result
                 if [ "$result" = "1" ];
@@ -23,6 +24,7 @@ pipeline {
                     echo "Test Failed!"
                     exit 1
                 fi
+                '''
                
                  /* sh '''
                   curl `http://webserver-ha-elb-1676357618.eu-west-2.elb.amazonaws.com/` | grep Stepanov
