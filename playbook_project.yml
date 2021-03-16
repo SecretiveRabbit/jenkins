@@ -5,11 +5,16 @@
   tasks:
 
     - name: copy index.html
-      copy: src=./index.html dest=/var/www/html/index.html mode=777
+      copy: src=./index.html dest=/var/www/html/index123.html mode=777
+      shell: |
+        export myip=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
+        cat index123.html | sed 's/myip/"'$myip'"/' > /var/www/html/index.html
+        rm index123.html
       notify: restart apache
+       
 
     - name: check work
-      shell: sleep 10 && curl localhost:80
+      shell: sleep 5 && curl localhost:80
 
   handlers:
 
