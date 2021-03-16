@@ -35,7 +35,7 @@ pipeline {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
                 echo "End of Stage Deploy"
-          }
-        
-    }
+             }
+         }
+  }
 }
