@@ -39,7 +39,7 @@ pipeline {
                 echo "Deploying......."
                 echo "End of Stage Deploy"
                 sh '''
-                ansible all -m ping
+                ansible-playbook playbook_project.yml -l all
                 '''
              }
          }
