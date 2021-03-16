@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-              #  docker build -t StepanovContainer
+              /  docker build -t StepanovContainer
                 echo "Start of Stage Build"
                 echo "Building......."
                 echo "End of Stage Build"   
@@ -23,10 +23,10 @@ pipeline {
                     exit 1
                 fi
                
-                 # sh '''
-                 #curl `http://webserver-ha-elb-1676357618.eu-west-2.elb.amazonaws.com/` | grep Stepanov
-                #echo "End of Stage Test"
-                #'''
+                 / sh '''
+                 / curl `http://webserver-ha-elb-1676357618.eu-west-2.elb.amazonaws.com/` | grep Stepanov
+                 / echo "End of Stage Test"
+                 / '''
            }
         }
 
